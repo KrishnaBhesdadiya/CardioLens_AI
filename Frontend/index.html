@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioLens AI | Precision Heart Health Forward</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-theme">
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <!-- <i class="fas fa-microscope"></i> -->
+                <i class="fas fa-heart-pulse"></i>
+                <span>CardioLens AI</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="model.html">Model Transparency</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+                <li><a href="prediction.html">Prediction</a></li>
+                <li><a href="guidance.html">Health Guidance</a></li>
+                <li><a href="caution.html">Caution</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Home / Hero Section -->
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="animate-up">
+                        <div class="hero-premium-header">
+                            <i class="fas fa-heart-pulse hero-heart-icon"></i>
+                            <div class="tag-badge">VITAL INTELLIGENCE</div>
+                        </div>
+                        <h1 class="hero-title">AI-Driven <span class="text-warm">Cardiovascular</span> Risk Prediction
+                        </h1>
+                        <p class="hero-subtitle">Advanced foresight for heart health, bridging the gap between clinical
+                            data and life-saving insights with state-of-the-art AI.</p>
+
+                        <div class="hero-btns">
+                            <a href="prediction.html" class="btn btn-primary">Start Prediction</a>
+                            <a href="model.html" class="btn btn-secondary">System Transparency</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual animate-fade">
+                    <div class="live-monitor-card card">
+                        <div class="card-header">
+                            <div class="status-indicator live">Live Simulator</div>
+                        </div>
+                        <div class="vitals-mini">
+                            <div class="v-item">SYS <strong id="sys-val">120</strong></div>
+                            <div class="v-item">DIA <strong id="dia-val">80</strong></div>
+                            <div class="v-item">PULSE <strong id="pulse-val">72</strong></div>
+                        </div>
+                        <div class="chart-container ecg-container">
+                            <canvas id="ecgChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Innovation Core Section -->
+        <section class="innovation-core">
+            <div class="container">
+                <div class="section-header animate-up">
+                    <!-- <div class="tag-badge">VITAL INTELLIGENCE</div> -->
+                    <div class="tag-badge">INNOVATION CORE</div>
+                    <h2 class="section-title">The Logic Behind the Lens</h2>
+                    <p>CardioLens AI integrates multiple layers of clinical intelligence to ensure every prediction is
+                        stable, interpretable, and precise.</p>
+                </div>
+                <div class="grid-3 animate-up">
+                    <div class="card">
+                        <i class="fas fa-layer-group text-sage"
+                            style="font-size: 2rem; margin-bottom: 1.5rem; display: block;"></i>
+                        <h3>Ensemble Learning</h3>
+                        <p>Our Random Forest utilizes 100+ decision trees to reduce variance and capture non-linear
+                            clinical relationships.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-microchip text-sage"
+                            style="font-size: 2rem; margin-bottom: 1.5rem; display: block;"></i>
+                        <h3>Hardware Optimization</h3>
+                        <p>Processing optimized for efficiency, ensuring rapid local inference without sacrificing model
+                            depth.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-user-shield text-sage"
+                            style="font-size: 2rem; margin-bottom: 1.5rem; display: block;"></i>
+                        <h3>Data Integrity</h3>
+                        <p>Strict feature engineering protocols validate every marker to maintain clinical grade
+                            standard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Home-only Features Highlights -->
+        <section class="home-highlights">
+            <div class="container grid-3">
+                <div class="highlight-item animate-up">
+                    <i class="fas fa-microscope text-sage"></i>
+                    <h4>Precision Research</h4>
+                    <p>Built on datasets featuring over 1,000 clinically validated cardiovascular records.</p>
+                </div>
+                <div class="highlight-item animate-up">
+                    <i class="fas fa-shield-alt text-sage"></i>
+                    <h4>Ethical Oversight</h4>
+                    <p>Transparent Random Forest architecture ensuring explainable clinical decisions.</p>
+                </div>
+                <div class="highlight-item animate-up">
+                    <i class="fas fa-user-check text-sage"></i>
+                    <h4>Patient First</h4>
+                    <p>Designed to complement medical expertise, not replace it.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <div class="logo">
+                    <i class="fas fa-microscope"></i>
+                    <span>CardioLens AI</span>
+                </div>
+                <p>Advanced cardiovascular foresight powered by state-of-the-art AI.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Vision</a></li>
+                        <li><a href="prediction.html">Prediction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Science</h4>
+                    <ul>
+                        <li><a href="model.html">Random Forest</a></li>
+                        <li><a href="analysis.html">Technical Analysis</a></li>
+                        <li><a href="guidance.html">Clinical Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="caution.html">Caution & Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 CardioLens AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

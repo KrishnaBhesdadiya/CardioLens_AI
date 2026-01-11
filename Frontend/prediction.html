@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Prediction | CardioLens AI Clinical Assessment</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-theme">
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-microscope"></i>
+                <span>CardioLens AI</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="model.html">Model Transparency</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+                <li><a href="prediction.html" class="active">Prediction</a></li>
+                <li><a href="guidance.html">Health Guidance</a></li>
+                <li><a href="caution.html">Caution</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="page-header">
+            <div class="container animate-up">
+                <h1>Clinical Assessment</h1>
+                <p>Provide cardiovascular clinical markers to generate a Random Forest risk probability.</p>
+            </div>
+        </header>
+
+        <section class="prediction-form-section">
+            <div class="container">
+                <div class="prediction-form-card card animate-up">
+                    <form id="predictionForm">
+                        <div class="form-grid">
+                            <!-- Demographics -->
+                            <div class="form-section-title">Demographics & Vitals</div>
+                            <div class="form-group">
+                                <label for="age">Age (Years)</label>
+                                <input type="number" id="age" name="age" placeholder="e.g. 52" value="52" required
+                                    min="1" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="2" selected>Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" id="height" name="height" placeholder="e.g. 175" value="175"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="weight">Weight (kg)</label>
+                                <input type="number" id="weight" name="weight" placeholder="e.g. 78" value="78"
+                                    required>
+                            </div>
+
+                            <!-- Clinical Indices -->
+                            <div class="form-section-title">Clinical Indices</div>
+                            <div class="form-group">
+                                <label for="ap_hi">Systolic Blood Pressure</label>
+                                <input type="number" id="ap_hi" name="ap_hi" placeholder="mmHg" value="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ap_lo">Diastolic Blood Pressure</label>
+                                <input type="number" id="ap_lo" name="ap_lo" placeholder="mmHg" value="80" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cholesterol">Cholesterol Level</label>
+                                <select id="cholesterol" name="cholesterol" required>
+                                    <option value="1" selected>Normal</option>
+                                    <option value="2">Above Normal</option>
+                                    <option value="3">Well Above Normal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gluc">Glucose Level</label>
+                                <select id="gluc" name="gluc" required>
+                                    <option value="1" selected>Normal</option>
+                                    <option value="2">Above Normal</option>
+                                    <option value="3">Well Above Normal</option>
+                                </select>
+                            </div>
+
+                            <!-- Lifestyle Factors -->
+                            <div class="form-section-title">Lifestyle Factors</div>
+                            <div class="form-group">
+                                <label for="smoke">Smoking Status</label>
+                                <select id="smoke" name="smoke" required>
+                                    <option value="0" selected>Non-Smoker</option>
+                                    <option value="1">Smoker</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="alco">Alcohol Intake</label>
+                                <select id="alco" name="alco" required>
+                                    <option value="0" selected>No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="active">Physical Activity</label>
+                                <select id="active" name="active" required>
+                                    <option value="1" selected>Active</option>
+                                    <option value="0">Sedentary</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-microscope"></i> Run Clinical Analysis
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="predictionResult" class="prediction-result hidden animate-fade">
+                        <!-- Advanced Result UI injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <div class="logo">
+                    <i class="fas fa-microscope"></i>
+                    <span>CardioLens AI</span>
+                </div>
+                <p>Advanced cardiovascular foresight powered by state-of-the-art AI.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Vision</a></li>
+                        <li><a href="prediction.html">Prediction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Science</h4>
+                    <ul>
+                        <li><a href="model.html">Random Forest</a></li>
+                        <li><a href="analysis.html">Technical Analysis</a></li>
+                        <li><a href="guidance.html">Clinical Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="caution.html">Caution & Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 CardioLens AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

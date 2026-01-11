@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Transparency | CardioLens AI Random Forest Architecture</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-theme">
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-microscope"></i>
+                <span>CardioLens AI</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="model.html" class="active">Model Transparency</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+                <li><a href="prediction.html">Prediction</a></li>
+                <li><a href="guidance.html">Health Guidance</a></li>
+                <li><a href="caution.html">Caution</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="page-header">
+            <div class="container animate-up">
+                <h1>Architecture & Ethics</h1>
+                <p>Transparent cardiovascular forecasting through ensemble learning and rigorous data integrity.</p>
+            </div>
+        </header>
+
+        <section class="inference-pipeline">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Inference Pipeline</h2>
+                    <p>From clinical markers to validated risks: our 4-stage processing flow.</p>
+                </div>
+                <div class="pipeline-flow animate-up">
+                    <div class="pipeline-step">
+                        <div class="step-badge">01</div>
+                        <h3>Ingestion</h3>
+                        <p>Raw clinical markers are securely received and validated for clinical ranges (e.g., BP 60-250
+                            mmHg).</p>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-badge">02</div>
+                        <h3>Cleaning</h3>
+                        <p>Handling missing values through median imputation and out-of-bounds noise filtration.</p>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-badge">03</div>
+                        <h3>Feature Engineering</h3>
+                        <p>BMI calculation and one-hot encoding for categorical variables like Thalassemia and ECG
+                            results.</p>
+                    </div>
+                    <div class="pipeline-step spotlight">
+                        <div class="step-badge">04</div>
+                        <h3>Random Forest Classifier</h3>
+                        <p>An ensemble of decision trees voting on the final risk probability to provide high robustness
+                            and low variance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-transformation bg-secondary">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="text-block animate-up">
+                        <h2>Data Transformation Summary</h2>
+                        <p>Our model was trained on the UCI Heart Disease dataset, augmented with synthetic clinical
+                            records to ensure a balanced representation across sexes and age groups.</p>
+                        <ul class="check-list">
+                            <li><strong>Rows Retained:</strong> 1,025 validated clinical records.</li>
+                            <li><strong>Feature Count:</strong> 13 primary features engineered into 22 model inputs.
+                            </li>
+                            <li><strong>Normalization:</strong> Min-Max scaling applied to cholesterol and blood
+                                pressure features.</li>
+                            <li><strong>Encoding:</strong> Labels converted to binary flags (0, 1) to ensure
+                                classification consistency.</li>
+                        </ul>
+                    </div>
+                    <div class="card animate-fade">
+                        <div class="feature-importance-polished">
+                            <h4>Feature Importance (Mean Decrease Gini)</h4>
+                            <div class="bar-chart-container">
+                                <div class="bar-row">
+                                    <span class="bar-label">Age</span>
+                                    <div class="bar-wrapper">
+                                        <div class="bar-fill" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-row">
+                                    <span class="bar-label">Chol</span>
+                                    <div class="bar-wrapper">
+                                        <div class="bar-fill" style="width: 70%;"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-row">
+                                    <span class="bar-label">Max HR</span>
+                                    <div class="bar-wrapper">
+                                        <div class="bar-fill" style="width: 65%;"></div>
+                                    </div>
+                                </div>
+                                <div class="bar-row">
+                                    <span class="bar-label">Sex</span>
+                                    <div class="bar-wrapper">
+                                        <div class="bar-fill" style="width: 40%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="interpretability">
+            <div class="container animate-up">
+                <div class="card rose-border">
+                    <h2>Interpretability over Complexity</h2>
+                    <p>While deep neural networks offer high performance, they often function as "black boxes." In
+                        medical AI, transparency is non-negotiable.</p>
+                    <p>We chose <strong>Random Forest</strong> because it provides a clear "Importance Map"—allowing us
+                        to explain exactly which clinical markers contributed most to a patient's risk score. This
+                        balanced approach ensures high accuracy (94%+) while maintaining the human clinician's ability
+                        to verify and trust the machine's output.</p>
+                    <div class="quote-coral">"Trust in medical AI is built on the ability to explain 'Why' an answer was
+                        given."</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <div class="logo">
+                    <i class="fas fa-microscope"></i>
+                    <span>CardioLens AI</span>
+                </div>
+                <p>Advanced cardiovascular foresight powered by state-of-the-art AI.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Vision</a></li>
+                        <li><a href="prediction.html">Prediction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Science</h4>
+                    <ul>
+                        <li><a href="model.html">Random Forest</a></li>
+                        <li><a href="analysis.html">Technical Analysis</a></li>
+                        <li><a href="guidance.html">Clinical Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="caution.html">Caution & Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 CardioLens AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

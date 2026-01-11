@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Guidance | Preventive Clinical Advice by CardioLens AI</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-theme">
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-microscope"></i>
+                <span>CardioLens AI</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="model.html">Model Transparency</a></li>
+                <li><a href="analysis.html">Analysis</a></li>
+                <li><a href="prediction.html">Prediction</a></li>
+                <li><a href="guidance.html" class="active">Health Guidance</a></li>
+                <li><a href="caution.html">Caution</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="page-header">
+            <div class="container animate-up">
+                <h1>Preventive Guidance</h1>
+                <p>Personalized pathways to long-term heart health based on your clinical risk profile.</p>
+            </div>
+        </header>
+
+        <section class="risk-guidance">
+            <div class="container">
+                <!-- Low Risk -->
+                <div class="guidance-block card animate-up highlight-emerald">
+                    <div class="guidance-header">
+                        <i class="fas fa-heart text-sage"></i>
+                        <h2>Level 1: Maintain & Monitor (Low Risk)</h2>
+                    </div>
+                    <div class="grid-2">
+                        <div class="guidance-content">
+                            <p>Your current markers align with optimal cardiovascular function. The goal here is
+                                preservation and long-term sustainability.</p>
+                            <ul class="check-list">
+                                <li><strong>Annual Screening:</strong> Maintain your yearly physical for BP and lipid
+                                    profile monitoring.</li>
+                                <li><strong>Dietary Balance:</strong> Focus on the Mediterranean pattern—high in fiber,
+                                    healthy fats, and vegetable proteins.</li>
+                                <li><strong>Active Recovery:</strong> Keep up at least 150 minutes of moderate aerobic
+                                    activity weekly.</li>
+                            </ul>
+                        </div>
+                        <div class="quote-card animate-fade">
+                            <p>"Excellence in health is not an act, but a habit of prevention."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Moderate Risk -->
+                <div class="guidance-block card animate-up highlight-amber" style="margin-top: 3rem;">
+                    <div class="guidance-header">
+                        <i class="fas fa-stethoscope text-amber" style="color: #e9c46a;"></i>
+                        <h2>Level 2: Investigation & Action (Moderate Risk)</h2>
+                    </div>
+                    <div class="grid-2">
+                        <div class="guidance-content">
+                            <p>Certain clinical markers suggest minor deviations from the optimal range. This is a
+                                crucial window for intervention.</p>
+                            <ul class="check-list">
+                                <li><strong>Lipid Deep-Dive:</strong> Request an advanced lipid panel (ApoB, Lp(a)) to
+                                    better understand risk drivers.</li>
+                                <li><strong>Sodium Reduction:</strong> Aim for < 2,300mg sodium daily to reduce arterial
+                                        pressure.</li>
+                                <li><strong>Stress Management:</strong> Incorporate mindfulness or restorative sleep
+                                    hygiene to lower cortisol-driven BP spikes.</li>
+                            </ul>
+                        </div>
+                        <div class="callout animate-fade">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Early lifestyle adjustments at this stage can significantly reverse moderate risk
+                                markers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High Risk -->
+                <div class="guidance-block card animate-up highlight-rose" style="margin-top: 3rem;">
+                    <div class="guidance-header">
+                        <i class="fas fa-exclamation-triangle text-rose"></i>
+                        <h2>Level 3: Urgent Clinical Support (High Risk)</h2>
+                    </div>
+                    <div class="grid-2">
+                        <div class="guidance-content">
+                            <p>Your profile indicates significant markers that require professional medical
+                                prioritization.</p>
+                            <ul class="check-list">
+                                <li><strong>Consultation:</strong> Seek an immediate evaluation with a cardiologist.
+                                </li>
+                                <li><strong>Daily Monitoring:</strong> Track blood pressure twice daily—morning and
+                                    evening.</li>
+                                <li><strong>Restrictive Diet:</strong> Move toward a strict DASH or plant-forward
+                                    protocol immediately.</li>
+                            </ul>
+                        </div>
+                        <div class="emergency-box animate-fade">
+                            <h4>Priority Access</h4>
+                            <p>Contact your primary healthcare provider today to discuss these results professionally.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lifestyle-checklist bg-secondary">
+            <div class="container">
+                <div class="section-header animate-up">
+                    <h2>Universal Heart Health Pillars</h2>
+                    <p>Regardless of risk level, these three pillars are non-negotiable for longevity.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card animate-up">
+                        <div class="feature-icon"><i class="fas fa-walking"></i></div>
+                        <h3>The 10k Target</h3>
+                        <p>Aim for consistent movement. Even 30 minutes of brisk walking significantly improves
+                            endothelial function.</p>
+                    </div>
+                    <div class="feature-card animate-up">
+                        <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                        <h3>Plate Composition</h3>
+                        <p>Half your plate should consist of colorful, non-starchy vegetables at every major meal.</p>
+                    </div>
+                    <div class="feature-card animate-up">
+                        <div class="feature-icon"><i class="fas fa-bed"></i></div>
+                        <h3>Consistency is Key</h3>
+                        <p>7-9 hours of quality sleep allows the heart rate and blood pressure to dip, resting the
+                            cardiovascular system.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <div class="logo">
+                    <i class="fas fa-microscope"></i>
+                    <span>CardioLens AI</span>
+                </div>
+                <p>Advanced cardiovascular foresight powered by state-of-the-art AI.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Vision</a></li>
+                        <li><a href="prediction.html">Prediction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Science</h4>
+                    <ul>
+                        <li><a href="model.html">Random Forest</a></li>
+                        <li><a href="analysis.html">Technical Analysis</a></li>
+                        <li><a href="guidance.html">Clinical Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="caution.html">Caution & Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 CardioLens AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

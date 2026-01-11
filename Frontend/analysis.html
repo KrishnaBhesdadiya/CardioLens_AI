@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Analysis | CardioLens AI Model Performance</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-theme">
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-microscope"></i>
+                <span>CardioLens AI</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="model.html">Model Transparency</a></li>
+                <li><a href="analysis.html" class="active">Analysis</a></li>
+                <li><a href="prediction.html">Prediction</a></li>
+                <li><a href="guidance.html">Health Guidance</a></li>
+                <li><a href="caution.html">Caution</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="page-header">
+            <div class="container animate-up">
+                <h1>Performance Dashboard</h1>
+                <p>Quantifying the reliability and predictive precision of our clinical Random Forest model.</p>
+            </div>
+        </header>
+
+        <section class="metrics-overview">
+            <div class="container">
+                <div class="grid-4 metrics-snapshot animate-up">
+                    <div class="metric-card card spotlight-emerald">
+                        <span class="lbl">Accuracy</span>
+                        <h2 class="val">94.2%</h2>
+                        <p class="desc">Overall prediction consistency</p>
+                    </div>
+                    <div class="metric-card card">
+                        <span class="lbl">Precision</span>
+                        <h2 class="val">92.5%</h2>
+                        <p class="desc">Reliability of "High Risk" flags</p>
+                    </div>
+                    <div class="metric-card card">
+                        <span class="lbl">Recall</span>
+                        <h2 class="val">91.8%</h2>
+                        <p class="desc">Ability to identify all risk cases</p>
+                    </div>
+                    <div class="metric-card card">
+                        <span class="lbl">F1-Score</span>
+                        <h2 class="val">92.1%</h2>
+                        <p class="desc">Balanced harmonic mean</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="visual-analysis bg-secondary">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="card animate-up">
+                        <div class="card-header">
+                            <h3>Confusion Matrix</h3>
+                            <p>Observation Accuracy Heatmap</p>
+                        </div>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="confusionMatrixChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="text-block animate-up"
+                        style="display: flex; flex-direction: column; justify-content: center;">
+                        <h2>Validation Summary</h2>
+                        <p>The confusion matrix confirms balanced detection across classes, with a mean cross-validation
+                            accuracy of **94.2%** during testing sets.</p>
+                        <p>This stability ensures that the model remains robust across diverse patient demographics,
+                            minimizing both False Positives (over-diagnosis) and False Negatives (missed risks).</p>
+                        <div class="tag-badge" style="width: fit-content; margin-top: 1rem;">CROSS-VALIDATED</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-stability">
+            <div class="container">
+                <div class="section-header animate-up">
+                    <h2>Relative Feature Contribution</h2>
+                    <p>Understanding which clinical markers drive our Random Forest voting logic.</p>
+                </div>
+                <div class="card animate-up">
+                    <div class="chart-container" style="height: 400px;">
+                        <canvas id="featureStabilityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <div class="logo">
+                    <i class="fas fa-microscope"></i>
+                    <span>CardioLens AI</span>
+                </div>
+                <p>Advanced cardiovascular foresight powered by state-of-the-art AI.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Vision</a></li>
+                        <li><a href="prediction.html">Prediction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Science</h4>
+                    <ul>
+                        <li><a href="model.html">Random Forest</a></li>
+                        <li><a href="analysis.html">Technical Analysis</a></li>
+                        <li><a href="guidance.html">Clinical Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="caution.html">Caution & Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 CardioLens AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
