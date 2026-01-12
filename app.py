@@ -1,92 +1,93 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import pickle
+from flask import Flask, request, jsonify, send_from_directory
+import joblib
 import numpy as np
 import pandas as pd
 import os
 
-app = Flask(__name__)
-CORS(app)
+app = Flask(__name__, static_folder="Frontend", static_url_path="")
 
-# Load model and scaler
+# ===============================
+# Load trained model
+# ===============================
 MODEL_PATH = "model/model.pkl"
+model = joblib.load(MODEL_PATH)
 SCALER_PATH = "model/scaler.pkl"
+scaler = joblib.load(SCALER_PATH)
 
-if not os.path.exists(MODEL_PATH) or not os.path.exists(SCALER_PATH):
-    print("Error: Model or Scaler not found!")
-    exit(1)
+# ===============================
+# Serve UI Pages
+# ===============================
+@app.route("/")
+def home():
+    return send_from_directory("Frontend", "index.html")
 
-with open(MODEL_PATH, "rb") as f:
-    model = pickle.load(f)
+@app.route("/<path:filename>")
+def serve_ui(filename):
+    return send_from_directory("Frontend", filename)
 
-with open(SCALER_PATH, "rb") as f:
-    scaler = pickle.load(f)
-
-@app.route('/predict', methods=['POST'])
+# ===============================
+# Prediction API
+# ===============================
+@app.route("/predict", methods=["POST"])
 def predict():
+    data = request.get_json()
+
     try:
-        data = request.json
-        
-        # 1. Extract values
-        age = float(data.get('age'))
-        gender = int(data.get('gender'))
-        height = float(data.get('height'))
-        weight = float(data.get('weight'))
-        ap_hi = float(data.get('ap_hi'))
-        ap_lo = float(data.get('ap_lo'))
-        cholesterol = int(data.get('cholesterol'))
-        gluc = int(data.get('gluc'))
-        smoke = int(data.get('smoke'))
-        alco = int(data.get('alco'))
-        active = int(data.get('active'))
-        
-        # 2. Derive BMI
+        # -------- Numeric Inputs --------
+        age = int(data["age"])
+        gender = int(data["gender"])
+        height = int(data["height"])
+        weight = float(data["weight"])
+        ap_hi = int(data["ap_hi"])
+        ap_lo = int(data["ap_lo"])
+        cholesterol = int(data["cholesterol"])
+        gluc = int(data["gluc"])
+        smoke = int(data["smoke"])
+        alco = int(data["alco"])
+        active = int(data["active"])
+
+        # -------- Feature Engineering --------
         bmi = weight / ((height / 100) ** 2)
-        
-        # 3. Create feature vector in training order:
-        # [age, gender, height, weight, ap_hi, ap_lo, cholesterol, gluc, smoke, alco, active, bmi]
-        features = np.array([[
-            age, gender, height, weight, ap_hi, ap_lo, 
-            cholesterol, gluc, smoke, alco, active, bmi
-        ]])
-        
-        # 4. Scale features
-        features_scaled = scaler.transform(features)
-        
-        # 5. Predict probability
-        # [prob_low, prob_high]
-        prob = model.predict_proba(features_scaled)[0][1]
-        prob_percent = round(prob * 100, 1)
-        
-        # 6. Determine Risk Level
-        if prob_percent < 30:
-            level = "Low"
-            color = "#4e7a61" # Sage Green
-        elif prob_percent < 70:
-            level = "Moderate"
-            color = "#e9c46a" # Warm Yellow
+
+        # -------- Model Input Order (MATCH TRAINING) --------
+        numeric_features = np.array([
+            age, height, weight, ap_hi, ap_lo, bmi
+        ]).reshape(1, -1)
+
+        categorical_features = np.array([
+            gender, cholesterol, gluc, smoke, alco, active
+        ]).reshape(1, -1)
+
+        final_input = np.hstack((numeric_features, categorical_features))
+
+        # -------- Prediction --------
+        prediction = int(model.predict(final_input)[0])
+        probability = float(model.predict_proba(final_input)[0][1])
+
+        # -------- Risk Mapping --------
+        if probability >= 0.7:
+            risk_level = "High"
+        elif probability >= 0.4:
+            risk_level = "Medium"
         else:
-            level = "High"
-            color = "#d27d7d" # Soft Red
-            
+            risk_level = "Low"
+
+        # -------- Response (Frontend Contract) --------
         return jsonify({
-            "success": True,
-            "level": level,
-            "probability": prob_percent,
-            "color": color,
-            "accuracy": 73.0,  # From Training_Testing.ipynb Random Forest result
-            "precision": 76.0,
-            "recall": 68.0,
-            "f1": 72.0
+            "prediction": prediction,
+            "probability": probability,
+            "risk_level": risk_level
         })
-        
+
     except Exception as e:
-        return jsonify({"success": False, "error": str(e)}), 400
+        return jsonify({
+            "error": "Prediction failed",
+            "details": str(e)
+        }), 500
+
 
 # ===============================
 # Run App
 # ===============================
-
-if __name__ == '__main__':
-    # Running on local for development
-    app.run(debug=True, port=5005)
+if __name__ == "__main__":
+    app.run(debug=True)
