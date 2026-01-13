@@ -24,6 +24,9 @@
     --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --accent-warm: #e9c46a;
     /* Warm Sand/Amber for medical highlights */
+    /* Metric Values */
+    --metric-value-color: #121b18;
+    /* Deep slate – premium & readable */
 }
 
 [data-theme="dark"] {
@@ -42,6 +45,27 @@
     --nav-bg: rgba(18, 27, 24, 0.85);
     --border-color: #24332e;
 }
+
+[data-theme="dark"] {
+    /* Form Surfaces */
+    --form-bg: #16201d;
+    --form-bg-soft: #1f2b27;
+    --form-border: #2e3f39;
+
+    /* Inputs */
+    --input-bg: #1a2522;
+    --input-bg-elevated: #22302b;
+    --input-text: #e5ece8;
+    --input-placeholder: #94a3b8;
+
+    /* Danger (BP) */
+    --danger-bg-soft: rgba(239, 68, 68, 0.12);
+    --danger-border: rgba(239, 68, 68, 0.35);
+
+    --metric-value-color: #e5ece8;
+    /* Soft near-white (no eye strain) */
+}
+
 
 * {
     margin: 0;
@@ -1381,6 +1405,7 @@ section {
     }
 }
 
+
 .strategy-info {
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -1461,13 +1486,38 @@ section {
 }
 
 /* BP Card Premium */
-.bp-card-premium {
+/* .bp-card-premium {
     background: #fff5f5;
     border: 1px solid #fee2e2;
     border-radius: 20px;
     padding: 1.5rem;
     margin-top: 0.5rem;
+} */
+
+.bp-card-premium {
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-top: 0.5rem;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.25);
 }
+
+/* Dark mode */
+[data-theme="dark"] .bp-card-premium {
+    background: var(--danger-bg-soft);
+    border: 1px solid var(--danger-border);
+}
+
+.field-label,
+.field-label-sm {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .field-label,
+[data-theme="dark"] .field-label-sm {
+    color: #9ca3af;
+}
+
 
 .bp-header-flex {
     display: flex;
@@ -1566,13 +1616,27 @@ section {
 }
 
 .metric-card {
-    background: #f8fafc;
+    background: var(--bg-secondary);
+    /*Change up*/
     padding: 2.5rem 1.5rem;
     border-radius: 30px;
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.02);
     transition: transform 0.3s ease;
 }
+
+[data-theme="dark"] .metric-card {
+    background: var(--form-bg-soft);
+}
+
+/* MICRO-POLISH */
+[data-theme="dark"] .field-input:focus,
+[data-theme="dark"] select.field-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(127, 175, 199, 0.25);
+}
+
 
 .metric-card:hover {
     transform: translateY(-5px);
@@ -1591,7 +1655,8 @@ section {
 .metric-value {
     font-size: 3.5rem;
     font-weight: 900;
-    color: #1e293b;
+    color: var(--metric-value-color);
+    transition: color 0.4s ease;
 }
 
 #risk-label {
@@ -1732,7 +1797,7 @@ section {
     display: block;
 }
 
-.field-input {
+/* .field-input {
     width: 100%;
     padding: 10px;
     background: #f9fafb;
@@ -1751,7 +1816,57 @@ section {
     font-size: 14px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     color: var(--text-primary);
+} */
+
+.field-input,
+.field-input-white {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: var(--bg-primary);
 }
+
+/* Dark mode override */
+[data-theme="dark"] .field-input,
+[data-theme="dark"] .field-input-white {
+    background: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--form-border);
+}
+
+.field-input::placeholder,
+.field-input-white::placeholder {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .field-input::placeholder,
+[data-theme="dark"] .field-input-white::placeholder {
+    color: var(--input-placeholder);
+}
+
+select.field-input {
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, currentColor 50%),
+        linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) calc(50% + 1px),
+        calc(100% - 12px) calc(50% + 1px);
+    background-size: 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.2rem;
+}
+
+/* Dark mode dropdown */
+[data-theme="dark"] select.field-input {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
 
 .bp-title {
     font-size: 10px;
@@ -1957,4 +2072,3 @@ section {
         font-size: 1.2rem;
     }
 }
-
