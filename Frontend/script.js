@@ -194,10 +194,10 @@ function initAnalysisCharts() {
     activeCharts.stability = new Chart(stabilityCanvas.getContext('2d'), {
         type: 'radar',
         data: {
-            labels: ['Age', 'BP', 'Chol', 'Max HR', 'ECG', 'Thal'],
+            labels: ['Age', 'Sys. BP', 'Dia. BP', 'CHOL', 'Smoking', 'BMI', 'Active', 'Gluc'],
             datasets: [{
                 label: 'Global Sensitivity',
-                data: [85, 70, 75, 90, 60, 80],
+                data: [75, 98, 85, 82, 65, 70, 55, 60],
                 backgroundColor: 'rgba(78, 122, 97, 0.2)',
                 borderColor: '#4e7a61',
                 borderWidth: 2
@@ -235,7 +235,7 @@ function updateChartsTheme(theme) {
     });
 }
 
-// --- Prediction Form ---
+// --- Prediction Form (Premium Side-by-Side Version) ---
 function initPredictionForm() {
     const form = document.getElementById('predictionForm');
     if (!form) return;
@@ -245,78 +245,92 @@ function initPredictionForm() {
 
         const submitBtn = form.querySelector('button');
         const originalText = submitBtn.innerHTML;
+
+        // UI States
+        const initialState = document.getElementById('initial-state');
+        const processingState = document.getElementById('processing-state');
+        const resultState = document.getElementById('prediction-result');
+
+        // Transition to Processing
+        if (initialState) initialState.classList.add('hidden');
+        if (resultState) resultState.classList.add('hidden');
+        if (processingState) processingState.classList.remove('hidden');
+
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing Inference...';
+        submitBtn.style.opacity = '0.7';
 
         try {
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
 
-            // Send to Flask Backend
-            const response = await fetch('http://127.0.0.1:5005/predict', {
+            const response = await fetch('/predict', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
 
-            if (!response.ok) throw new Error('Backend inference failed');
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.details || errorData.error || `Server returned ${response.status}`);
+            }
 
             const result = await response.json();
 
             if (result.success) {
-                displayAdvancedResult(result);
+                // Short delay for "analytical" feel
+                setTimeout(() => {
+                    if (processingState) processingState.classList.add('hidden');
+                    displayAdvancedResult(result);
+                }, 1200);
             } else {
-                alert("Error: " + result.error);
+                alert("Model Error: " + (result.error || "Unknown failure"));
+                if (processingState) processingState.classList.add('hidden');
+                if (initialState) initialState.classList.remove('hidden');
             }
 
         } catch (err) {
-            console.error(err);
-            alert("Connection Error: Make sure the Python backend (app.py) is running.");
+            console.error("Inference Error:", err);
+            if (processingState) processingState.classList.add('hidden');
+            if (initialState) initialState.classList.remove('hidden');
+
+            const isNetworkError = err.message.includes('fetch') || err.name === 'TypeError';
+            if (isNetworkError) {
+                alert(`Connection Error!\n\nPlease ensure the Python server (app.py) is running on port 5000.`);
+            } else {
+                alert("Processing Error: " + err.message);
+            }
         } finally {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
+            submitBtn.style.opacity = '1';
         }
     });
 }
 
 function displayAdvancedResult(res) {
-    const resultDiv = document.getElementById('predictionResult');
-    const form = document.getElementById('predictionForm');
+    const resultDiv = document.getElementById('prediction-result');
+    const riskLabel = document.getElementById('risk-label');
+    const probText = document.getElementById('probability-text');
+    const gaugeFill = document.getElementById('gauge-fill');
 
-    form.classList.add('hidden');
+    if (!resultDiv) return;
+
+    // 1. Map Risk Level & Color
+    riskLabel.textContent = res.level;
+    riskLabel.style.color = res.color;
+
+    // 2. Set Confidence Text
+    probText.textContent = `${res.probability}%`;
+
+    // 3. Animate Gauge
+    if (gaugeFill) {
+        gaugeFill.style.width = '0%';
+        setTimeout(() => {
+            gaugeFill.style.width = `${res.probability}%`;
+            gaugeFill.style.backgroundColor = res.color;
+        }, 100);
+    }
+
+    // 4. Show Result
     resultDiv.classList.remove('hidden');
-
-    resultDiv.innerHTML = `
-        <div class="result-header">
-            <div class="risk-badge" style="background: ${res.color}15; color: ${res.color};">
-                <i class="fas ${res.level === 'High' ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i>
-                ${res.level} Risk Profile
-            </div>
-            <h2>Analysis Complete</h2>
-        </div>
-
-        <div class="probability-section">
-            <div class="prob-label">Risk Probability: <strong>${res.probability}%</strong></div>
-            <div class="prob-bar-container">
-                <div class="prob-bar" style="width: ${res.probability}%; background: ${res.color};"></div>
-            </div>
-        </div>
-
-        <div class="performance-snapshot">
-            <h4>Model Performance Snapshot</h4>
-            <div class="grid-4 metrics-mini">
-                <div class="m-item"><strong>${res.accuracy}%</strong> Accuracy</div>
-                <div class="m-item"><strong>${res.precision}%</strong> Precision</div>
-                <div class="m-item"><strong>${res.recall}%</strong> Recall</div>
-                <div class="m-item"><strong>${res.f1}%</strong> F1-Score</div>
-            </div>
-        </div>
-
-        <div class="result-actions">
-            <a href="guidance.html" class="btn btn-primary">View Guidance</a>
-            <button class="btn btn-secondary" onclick="location.reload()">New Assessment</button>
-        </div>
-    `;
-
     resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
