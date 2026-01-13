@@ -30,7 +30,9 @@ def serve_ui(filename):
 # ===============================
 @app.route("/predict", methods=["POST"])
 def predict():
+    print(">>> Prediction request received")
     data = request.get_json()
+    print(f">>> Data: {data}")
 
     try:
         # -------- Numeric Inputs --------
@@ -49,38 +51,51 @@ def predict():
         # -------- Feature Engineering --------
         bmi = weight / ((height / 100) ** 2)
 
-        # -------- Model Input Order (MATCH TRAINING) --------
-        numeric_features = np.array([
-            age, height, weight, ap_hi, ap_lo, bmi
-        ]).reshape(1, -1)
-
-        categorical_features = np.array([
-            gender, cholesterol, gluc, smoke, alco, active
-        ]).reshape(1, -1)
-
-        final_input = np.hstack((numeric_features, categorical_features))
-
-        # -------- Prediction --------
-        prediction = int(model.predict(final_input)[0])
-        probability = float(model.predict_proba(final_input)[0][1])
-
-        # -------- Risk Mapping --------
-        if probability >= 0.7:
-            risk_level = "High"
-        elif probability >= 0.4:
-            risk_level = "Medium"
+# 3. Create feature vector in training order:
+        # [age, gender, height, weight, ap_hi, ap_lo, cholesterol, gluc, smoke, alco, active, bmi]
+        features = np.array([[
+            age, gender, height, weight, ap_hi, ap_lo, 
+            cholesterol, gluc, smoke, alco, active, bmi
+        ]])
+        
+        # 4. Scale features
+        features_scaled = scaler.transform(features)
+        
+        # 5. Predict probability
+        # [prob_low, prob_high]
+        prediction = int(model.predict(features_scaled)[0])
+        prob = model.predict_proba(features_scaled)[0][1]
+        prob_percent = round(prob * 100, 1)
+        
+        # 6. Determine Risk Level
+        if prob_percent < 40:
+            level = "Low"
+            color = "#4e7a61" # Sage Green
+        elif prob_percent < 70:
+            level = "Moderate"
+            color = "#e9c46a" # Warm Yellow
         else:
-            risk_level = "Low"
+            level = "High"
+            color = "#d27d7d" # Soft Red
 
         # -------- Response (Frontend Contract) --------
+        print(">>> Prediction successful")
         return jsonify({
+            "success": True,
             "prediction": prediction,
-            "probability": probability,
-            "risk_level": risk_level
+            "probability": prob_percent,
+            "level": level,
+            "color": color,
+            "accuracy": 73.0,  # From Training_Testing.ipynb Random Forest result
+            "precision": 76.0,
+            "recall": 68.0,
+            "f1": 72.0
         })
 
     except Exception as e:
+        print(f">>> Prediction failed: {str(e)}")
         return jsonify({
+            "success": False,
             "error": "Prediction failed",
             "details": str(e)
         }), 500
@@ -91,3 +106,4 @@ def predict():
 # ===============================
 if __name__ == "__main__":
     app.run(debug=True)
+
