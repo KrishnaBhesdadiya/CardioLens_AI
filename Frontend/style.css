@@ -1323,14 +1323,15 @@ section {
 
 .strategy-viz {
     display: flex;
-    height: 60px;
-    border-radius: 20px;
-    overflow: hidden;
+    flex-direction: row;
+    gap: 16px;
+    height: 80px;
     margin-bottom: 2rem;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+/* TRAIN */
 .viz-train {
+    flex: 1;
     background: var(--accent-primary);
     color: white;
     display: flex;
@@ -1339,10 +1340,14 @@ section {
     font-weight: 800;
     font-size: 0.9rem;
     letter-spacing: 1px;
-    width: 80%;
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* TEST */
 .viz-test {
+    width: 130px;
+    /* md:w-32 equivalent */
     background: rgba(210, 125, 125, 0.15);
     color: var(--accent-danger);
     display: flex;
@@ -1351,8 +1356,29 @@ section {
     font-weight: 800;
     font-size: 0.9rem;
     letter-spacing: 1px;
-    width: 20%;
-    border-left: 2px solid white;
+    border-radius: 24px;
+    border: 2px solid rgba(210, 125, 125, 0.2);
+}
+
+.viz-train,
+.viz-test {
+    transition: transform 0.25s ease;
+}
+
+.viz-train:hover,
+.viz-test:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .strategy-viz {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .viz-test {
+        width: 100%;
+    }
 }
 
 .strategy-info {
@@ -1931,3 +1957,4 @@ section {
         font-size: 1.2rem;
     }
 }
+
