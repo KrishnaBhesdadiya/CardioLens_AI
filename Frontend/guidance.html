@@ -10,13 +10,19 @@
     <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .small-images {
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 
 <body class="light-theme">
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-microscope"></i>
+                <!-- <i class="fas fa-microscope"></i> -->
+                <i class="heartbeat fas fa-heart-pulse"></i>
                 <span>CardioLens AI</span>
             </a>
             <ul class="nav-menu" id="nav-menu">
@@ -54,8 +60,9 @@
                 <!-- Low Risk -->
                 <div class="guidance-block card animate-up highlight-emerald">
                     <div class="guidance-header">
-                        <i class="fas fa-heart text-sage"></i>
-                        <h2>Level 1: Maintain & Monitor (Low Risk)</h2>
+                        <!-- <i class="fas fa-heart text-sage small-images" style="color: red; font-size: larger;"></i> -->
+                        <i class="fas fa-shield-check small-images">🛡️</i>
+                        <h2 style="color:darkseagreen">Level 1: Maintain & Monitor (Low Risk)</h2>
                     </div>
                     <div class="grid-2">
                         <div class="guidance-content">
@@ -79,8 +86,8 @@
                 <!-- Moderate Risk -->
                 <div class="guidance-block card animate-up highlight-amber" style="margin-top: 3rem;">
                     <div class="guidance-header">
-                        <i class="fas fa-stethoscope text-amber" style="color: #e9c46a;"></i>
-                        <h2>Level 2: Investigation & Action (Moderate Risk)</h2>
+                        <i class="fas fa-stethoscope text-amber small-images" style="color: #e9c46a;"></i>
+                        <h2 style="color:#e9c46a">Level 2: Investigation & Action (Moderate Risk)</h2>
                     </div>
                     <div class="grid-2">
                         <div class="guidance-content">
@@ -106,8 +113,8 @@
                 <!-- High Risk -->
                 <div class="guidance-block card animate-up highlight-rose" style="margin-top: 3rem;">
                     <div class="guidance-header">
-                        <i class="fas fa-exclamation-triangle text-rose"></i>
-                        <h2>Level 3: Urgent Clinical Support (High Risk)</h2>
+                        <i class="fas fa-exclamation-triangle text-rose small-images" style="color:crimson"></i>
+                        <h2 style="color:crimson">Level 3: Urgent Clinical Support (High Risk)</h2>
                     </div>
                     <div class="grid-2">
                         <div class="guidance-content">
@@ -139,18 +146,21 @@
                     <p>Regardless of risk level, these three pillars are non-negotiable for longevity.</p>
                 </div>
                 <div class="features-grid">
-                    <div class="feature-card animate-up">
+                    <div class="feature-card animate-up"
+                        style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* shadow-md */">
                         <div class="feature-icon"><i class="fas fa-walking"></i></div>
                         <h3>The 10k Target</h3>
                         <p>Aim for consistent movement. Even 30 minutes of brisk walking significantly improves
                             endothelial function.</p>
                     </div>
-                    <div class="feature-card animate-up">
+                    <div class="feature-card animate-up"
+                        style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* shadow-md */">
                         <div class="feature-icon"><i class="fas fa-seedling"></i></div>
                         <h3>Plate Composition</h3>
                         <p>Half your plate should consist of colorful, non-starchy vegetables at every major meal.</p>
                     </div>
-                    <div class="feature-card animate-up">
+                    <div class="feature-card animate-up"
+                        style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* shadow-md */">
                         <div class="feature-icon"><i class="fas fa-bed"></i></div>
                         <h3>Consistency is Key</h3>
                         <p>7-9 hours of quality sleep allows the heart rate and blood pressure to dip, resting the
