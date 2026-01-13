@@ -19,7 +19,7 @@
         <div class="container nav-container">
             <a href="index.html" class="logo">
                 <!-- <i class="fas fa-microscope"></i> -->
-                <i class="fas fa-heart-pulse"></i>
+                <i class="heartbeat fas fa-heart-pulse"></i>
                 <span>CardioLens AI</span>
             </a>
             <ul class="nav-menu" id="nav-menu">
@@ -47,7 +47,7 @@
     <main>
         <!-- Home / Hero Section -->
         <section class="hero" id="home">
-            <div class="container hero-container">
+            <div class="container hero-container" style="text-align: center;">
                 <div class="hero-content">
                     <div class="animate-up">
                         <div class="hero-premium-header">
@@ -65,23 +65,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-visual animate-fade">
-                    <div class="live-monitor-card card">
-                        <div class="card-header">
-                            <div class="status-indicator live">Live Simulator</div>
-                        </div>
-                        <div class="vitals-mini">
-                            <div class="v-item">SYS <strong id="sys-val">120</strong></div>
-                            <div class="v-item">DIA <strong id="dia-val">80</strong></div>
-                            <div class="v-item">PULSE <strong id="pulse-val">72</strong></div>
-                        </div>
-                        <div class="chart-container ecg-container">
-                            <canvas id="ecgChart"></canvas>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
+        <div class="hero-visual animate-fade">
+            <div class="live-monitor-card card">
+                <div class="card-header">
+                    <div class="status-indicator live">Live Simulator</div>
+                </div>
+                <div class="vitals-mini">
+                    <div class="v-item">SYS <strong id="sys-val">120</strong></div>
+                    <div class="v-item">DIA <strong id="dia-val">80</strong></div>
+                    <div class="v-item">PULSE <strong id="pulse-val">72</strong></div>
+                </div>
+                <div class="chart-container ecg-container">
+                    <canvas id="ecgChart"></canvas>
+                </div>
+            </div>
+        </div>
 
         <!-- Innovation Core Section -->
         <section class="innovation-core">
@@ -125,7 +125,7 @@
                 <div class="highlight-item animate-up">
                     <i class="fas fa-microscope text-sage"></i>
                     <h4>Precision Research</h4>
-                    <p>Built on datasets featuring over 1,000 clinically validated cardiovascular records.</p>
+                    <p>Built on datasets featuring over 70,000 clinically validated cardiovascular records.</p>
                 </div>
                 <div class="highlight-item animate-up">
                     <i class="fas fa-shield-alt text-sage"></i>
