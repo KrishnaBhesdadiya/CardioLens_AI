@@ -18,7 +18,8 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-microscope"></i>
+                <!-- <i class="fas fa-microscope"></i> -->
+                <i class="heartbeat fas fa-heart-pulse"></i>
                 <span>CardioLens AI</span>
             </a>
             <ul class="nav-menu" id="nav-menu">
@@ -54,25 +55,26 @@
         <section class="metrics-overview">
             <div class="container">
                 <div class="grid-4 metrics-snapshot animate-up">
-                    <div class="metric-card card spotlight-emerald">
+                    <div class="metric-card card spotlight-emerald"
+                        style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* shadow-md */">
                         <span class="lbl">Accuracy</span>
-                        <h2 class="val">94.2%</h2>
+                        <h2 class="val">73.02%</h2>
                         <p class="desc">Overall prediction consistency</p>
                     </div>
-                    <div class="metric-card card">
+                    <div class="metric-card card" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* shadow-md */">
                         <span class="lbl">Precision</span>
-                        <h2 class="val">92.5%</h2>
-                        <p class="desc">Reliability of "High Risk" flags</p>
+                        <h2 class="val">73.00%</h2>
+                        <p class="desc">Overall reliability of model predictions</p>
                     </div>
-                    <div class="metric-card card">
+                    <div class="metric-card card" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* shadow-md */">
                         <span class="lbl">Recall</span>
-                        <h2 class="val">91.8%</h2>
-                        <p class="desc">Ability to identify all risk cases</p>
+                        <h2 class="val">73.00%</h2>
+                        <p class="desc">Overall ability to identify risk cases</p>
                     </div>
-                    <div class="metric-card card">
+                    <div class="metric-card card" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* shadow-md */">
                         <span class="lbl">F1-Score</span>
-                        <h2 class="val">92.1%</h2>
-                        <p class="desc">Balanced harmonic mean</p>
+                        <h2 class="val">73.00%</h2>
+                        <p class="desc">Balanced harmonic mean of precision and recall</p>
                     </div>
                 </div>
             </div>
@@ -94,7 +96,7 @@
                         style="display: flex; flex-direction: column; justify-content: center;">
                         <h2>Validation Summary</h2>
                         <p>The confusion matrix confirms balanced detection across classes, with a mean cross-validation
-                            accuracy of **94.2%** during testing sets.</p>
+                            accuracy of **73.02%** during testing sets.</p>
                         <p>This stability ensures that the model remains robust across diverse patient demographics,
                             minimizing both False Positives (over-diagnosis) and False Negatives (missed risks).</p>
                         <div class="tag-badge" style="width: fit-content; margin-top: 1rem;">CROSS-VALIDATED</div>
@@ -109,9 +111,86 @@
                     <h2>Relative Feature Contribution</h2>
                     <p>Understanding which clinical markers drive our Random Forest voting logic.</p>
                 </div>
-                <div class="card animate-up">
-                    <div class="chart-container" style="height: 400px;">
-                        <canvas id="featureStabilityChart"></canvas>
+
+                <div class="significance-container animate-up">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Sensitivity Radar</h3>
+                            <p>Global Feature Importance</p>
+                        </div>
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="featureStabilityChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="significance-details">
+                        <div class="text-block mb-8">
+                            <h3 class="mb-4">Feature Significance</h3>
+                            <p>
+                                The AI determines risk based on the weighted contribution of each clinical marker.
+                                <strong>Systolic Blood Pressure</strong> currently holds the highest predictive weight
+                                in our model.
+                            </p>
+                        </div>
+
+                        <div class="significance-list">
+                            <div class="significance-item">
+                                <div class="feature-meta">
+                                    <span class="feature-index">Rank #1</span>
+                                    <span class="feature-label">Systolic Blood Pressure</span>
+                                </div>
+                                <span class="impact-badge impact-high">HIGH IMPACT</span>
+                            </div>
+                            <div class="significance-item">
+                                <div class="feature-meta">
+                                    <span class="feature-index">Rank #2</span>
+                                    <span class="feature-label">Diastolic Blood Pressure</span>
+                                </div>
+                                <span class="impact-badge impact-high">HIGH IMPACT</span>
+                            </div>
+                            <div class="significance-item">
+                                <div class="feature-meta">
+                                    <span class="feature-index">Rank #3</span>
+                                    <span class="feature-label">Cholesterol Level</span>
+                                </div>
+                                <span class="impact-badge impact-high">HIGH IMPACT</span>
+                            </div>
+                            <div class="significance-item">
+                                <div class="feature-meta">
+                                    <span class="feature-index">Rank #4</span>
+                                    <span class="feature-label">Patient Age</span>
+                                </div>
+                                <span class="impact-badge impact-med">MED IMPACT</span>
+                            </div>
+                            <div class="significance-item">
+                                <div class="feature-meta">
+                                    <span class="feature-index">Rank #5</span>
+                                    <span class="feature-label">BMI Index</span>
+                                </div>
+                                <span class="impact-badge impact-med">MED IMPACT</span>
+                            </div>
+                            <div class="significance-item">
+                                <div class="feature-meta">
+                                    <span class="feature-index">Rank #6</span>
+                                    <span class="feature-label">Smoking Status</span>
+                                </div>
+                                <span class="impact-badge impact-med">MED IMPACT</span>
+                            </div>
+                            <div class="significance-item">
+                                <div class="feature-meta">
+                                    <span class="feature-index">Rank #7</span>
+                                    <span class="feature-label">Glucose Level</span>
+                                </div>
+                                <span class="impact-badge impact-low">LOW IMPACT</span>
+                            </div>
+                            <div class="significance-item">
+                                <div class="feature-meta">
+                                    <span class="feature-index">Rank #8</span>
+                                    <span class="feature-label">Physical Activity</span>
+                                </div>
+                                <span class="impact-badge impact-low">LOW IMPACT</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
