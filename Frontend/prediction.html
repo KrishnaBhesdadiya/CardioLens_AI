@@ -16,7 +16,7 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-microscope"></i>
+                <i class="heartbeat fas fa-heart-pulse"></i>
                 <span>CardioLens AI</span>
             </a>
             <ul class="nav-menu" id="nav-menu">
@@ -44,101 +44,182 @@
     <main>
         <header class="page-header">
             <div class="container animate-up">
-                <h1>Clinical Assessment</h1>
-                <p>Provide cardiovascular clinical markers to generate a Random Forest risk probability.</p>
+                <h1>AI Cardiovascular Assessment</h1>
+                <p>Input clinical bio-markers for real-time risk stratification and diagnostic insight.</p>
             </div>
         </header>
 
         <section class="prediction-form-section">
             <div class="container">
-                <div class="prediction-form-card card animate-up">
-                    <form id="predictionForm">
-                        <div class="form-grid">
-                            <!-- Demographics -->
+                <div class="prediction-layout">
+                    <!-- Left Column: Clinical Form -->
+                    <div class="prediction-form-card card animate-fade">
+                        <div class="form-header-premium">
+                            <div class="form-header-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <h2>Clinical Record</h2>
+                        </div>
+
+                        <form id="predictionForm" class="prediction-form">
+                            <!-- AGE & GENDER -->
                             <div class="form-section-title">Demographics & Vitals</div>
-                            <div class="form-group">
-                                <label for="age">Age (Years)</label>
-                                <input type="number" id="age" name="age" placeholder="e.g. 52" value="52" required
-                                    min="1" max="120">
-                            </div>
-                            <div class="form-group">
-                                <label for="gender">Gender</label>
-                                <select id="gender" name="gender" required>
-                                    <option value="2" selected>Male</option>
-                                    <option value="1">Female</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="height">Height (cm)</label>
-                                <input type="number" id="height" name="height" placeholder="e.g. 175" value="175"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <label for="weight">Weight (kg)</label>
-                                <input type="number" id="weight" name="weight" placeholder="e.g. 78" value="78"
-                                    required>
+                            <div class="form-grid-2">
+                                <div class="form-field">
+                                    <label class="field-label">Age (Years)</label>
+                                    <input type="number" name="age" placeholder="45" min="18" max="100" required
+                                        class="field-input">
+                                </div>
+
+                                <div class="form-field">
+                                    <label class="field-label">Gender</label>
+                                    <select name="gender" class="field-input">
+                                        <option value="1">Female</option>
+                                        <option value="2">Male</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <!-- Clinical Indices -->
-                            <div class="form-section-title">Clinical Indices</div>
-                            <div class="form-group">
-                                <label for="ap_hi">Systolic Blood Pressure</label>
-                                <input type="number" id="ap_hi" name="ap_hi" placeholder="mmHg" value="120" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="ap_lo">Diastolic Blood Pressure</label>
-                                <input type="number" id="ap_lo" name="ap_lo" placeholder="mmHg" value="80" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="cholesterol">Cholesterol Level</label>
-                                <select id="cholesterol" name="cholesterol" required>
-                                    <option value="1" selected>Normal</option>
-                                    <option value="2">Above Normal</option>
-                                    <option value="3">Well Above Normal</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="gluc">Glucose Level</label>
-                                <select id="gluc" name="gluc" required>
-                                    <option value="1" selected>Normal</option>
-                                    <option value="2">Above Normal</option>
-                                    <option value="3">Well Above Normal</option>
-                                </select>
+                            <!-- HEIGHT & WEIGHT -->
+                            <div class="form-grid-2">
+                                <div class="form-field">
+                                    <label class="field-label">Height (cm)</label>
+                                    <input type="number" name="height" placeholder="175" min="120" max="250" required
+                                        class="field-input">
+                                </div>
+
+                                <div class="form-field">
+                                    <label class="field-label">Weight (kg)</label>
+                                    <input type="number" name="weight" placeholder="70" min="40" max="180" required
+                                        class="field-input">
+                                </div>
                             </div>
 
-                            <!-- Lifestyle Factors -->
+                            <!-- BLOOD PRESSURE CARD -->
+                            <div class="bp-card-premium">
+                                <div class="bp-header-flex">
+                                    <span class="bp-title">Blood Pressure</span>
+                                    <em class="bp-note">Highly Critical</em>
+                                </div>
+
+                                <div class="grid-1">
+                                    <div class="form-field" style="padding-bottom: 16px;">
+                                        <label class="field-label-sm">Systolic (ap_hi)</label>
+                                        <input type="number" name="ap_hi" placeholder="Normal: 120 (Range: 85-180)"
+                                            class="field-input-white" required>
+                                    </div>
+
+                                    <div class="form-field">
+                                        <label class="field-label-sm">Diastolic (ap_lo)</label>
+                                        <input type="number" name="ap_lo" placeholder="Normal: 80 (Range: 50-120)"
+                                            class="field-input-white" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CHOLESTEROL & GLUCOSE -->
+                            <div class="form-grid-2" style="padding-top: 16px;">
+                                <div class="form-field">
+                                    <label class="field-label">Cholesterol</label>
+                                    <select name="cholesterol" class="field-input">
+                                        <option value="1">Normal</option>
+                                        <option value="2">Above Normal</option>
+                                        <option value="3">Well Above Normal</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field">
+                                    <label class="field-label">Glucose</label>
+                                    <select name="gluc" class="field-input">
+                                        <option value="1">Normal</option>
+                                        <option value="2">Above Normal</option>
+                                        <option value="3">Well Above Normal</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!-- LIFESTYLE -->
                             <div class="form-section-title">Lifestyle Factors</div>
-                            <div class="form-group">
-                                <label for="smoke">Smoking Status</label>
-                                <select id="smoke" name="smoke" required>
-                                    <option value="0" selected>Non-Smoker</option>
-                                    <option value="1">Smoker</option>
-                                </select>
+                            <div class="form-grid-2" style="padding-top: 16px;">
+                                <div class="form-field">
+                                    <label class="field-label">Smoking Status</label>
+                                    <select name="smoke" class="field-input">
+                                        <option value="0">Non-Smoker</option>
+                                        <option value="1">Smoker</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field">
+                                    <label class="field-label">Alcohol Intake</label>
+                                    <select name="alco" class="field-input">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="alco">Alcohol Intake</label>
-                                <select id="alco" name="alco" required>
-                                    <option value="0" selected>No</option>
-                                    <option value="1">Yes</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="active">Physical Activity</label>
-                                <select id="active" name="active" required>
+                            <div class="form-field" style="margin-top: 15px;">
+                                <label class="field-label">Physical Activity</label>
+                                <select name="active" class="field-input" required>
                                     <option value="1" selected>Active</option>
                                     <option value="0">Sedentary</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-block">
-                                <i class="fas fa-microscope"></i> Run Clinical Analysis
-                            </button>
-                        </div>
-                    </form>
 
-                    <div id="predictionResult" class="prediction-result hidden animate-fade">
-                        <!-- Advanced Result UI injected via JS -->
+                            <div class="form-actions" style="margin-top: 2rem;">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <i class="fas fa-microscope"></i> Run Clinical Analysis
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Right Column: State Management -->
+                    <div class="prediction-column-sticky">
+
+                        <!-- Result State -->
+                        <div id="prediction-result" class="hidden animate-fade">
+                            <div class="result-card-premium">
+                                <div class="premium-header-flex">
+                                    <div class="premium-title-group">
+                                        <div class="h-line"></div>
+                                        <h2 class="premium-title">Cardiovascular Profile</h2>
+                                        <p class="premium-subtitle">Assessed via Clinical Random Forest Classifier</p>
+                                    </div>
+                                    <div class="premium-heart-icon heartbeat">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                </div>
+
+                                <div class="premium-metric-grid">
+                                    <div class="metric-card">
+                                        <span class="metric-label">MODEL-PROJECTED RISK</span>
+                                        <div id="risk-label" class="metric-value">---</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <span class="metric-label">Risk Probability</span>
+                                        <div id="probability-text" class="metric-value">0.0%</div>
+                                    </div>
+                                </div>
+
+                                <div class="premium-gauge-section">
+                                    <div class="gauge-labels-premium">
+                                        <span>NEGATIVE OUTLOOK</span>
+                                        <span>CRITICAL CONCERN</span>
+                                    </div>
+                                    <div class="premium-gauge-track">
+                                        <div id="gauge-fill" class="premium-gauge-fill"></div>
+                                    </div>
+                                </div>
+
+                                <div class="result-actions-premium" style="padding-top: 2rem;">
+                                    <button class="btn btn-secondary btn-block" onclick="location.reload()">
+                                        <i class="fas fa-rotate-right"></i> Reset Assessment
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -149,7 +230,8 @@
         <div class="container footer-container">
             <div class="footer-info">
                 <div class="logo">
-                    <i class="fas fa-microscope"></i>
+                    <!-- <i class="fas fa-microscope"></i> -->
+                    <i class="fas fa-heart-pulse"></i>
                     <span>CardioLens AI</span>
                 </div>
                 <p>Advanced cardiovascular foresight powered by state-of-the-art AI.</p>
