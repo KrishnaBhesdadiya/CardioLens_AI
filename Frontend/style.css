@@ -3,10 +3,10 @@
     --bg-primary: #fdfbf7;
     /* Ivory / Warm White */
     --bg-secondary: #f4f5f0;
-    --text-primary: #1a2f23;
+    --text-primary: #084b25;
     /* Deep Emerald for headlines */
     --text-secondary: #4b5563;
-    --accent-primarys: #4e7a61;
+    --accent-primarys: #059669;
     --accent-primary: linear-gradient(135deg, #2f6f4e, #5dd6a3);
     /* Sage Green */
     --accent-secondary: #e9967a;
@@ -2109,6 +2109,7 @@ select.field-input {
         font-size: 1.2rem;
     }
 }
+
 
 
 
