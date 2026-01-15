@@ -6,7 +6,8 @@
     --text-primary: #1a2f23;
     /* Deep Emerald for headlines */
     --text-secondary: #4b5563;
-    --accent-primary: #4e7a61;
+    --accent-primarys: #4e7a61;
+    --accent-primary: linear-gradient(135deg, #2f6f4e, #5dd6a3);
     /* Sage Green */
     --accent-secondary: #e9967a;
     /* Soft Coral */
@@ -35,7 +36,8 @@
     --bg-secondary: #0d1412;
     --text-primary: #e5ece8;
     --text-secondary: #9ca3af;
-    --accent-primary: #7FAFC7;
+    --accent-primarys: #568399;
+    --accent-primary: linear-gradient(135deg, #568399, #aebec6);
     /* Muted Teal / Soft Cyan for readability */
     --accent-secondary: #f0b9a5;
     /* Lighter Coral */
@@ -405,7 +407,7 @@ ul {
 .btn-secondary {
     background: transparent;
     color: var(--accent-primary);
-    border: 2px solid var(--accent-primary);
+    border: 2px solid var(--accent-primarys);
 }
 
 .btn-secondary:hover {
@@ -2107,4 +2109,5 @@ select.field-input {
         font-size: 1.2rem;
     }
 }
+
 
