@@ -189,7 +189,7 @@ ul {
     gap: 0.6rem;
     font-size: 1.6rem;
     font-weight: 800;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     letter-spacing: -0.5px;
 }
 
@@ -222,7 +222,7 @@ ul {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
 }
 
 .nav-actions {
@@ -291,7 +291,7 @@ ul {
     display: inline-block;
     padding: 0.5rem 1.2rem;
     background: rgba(78, 122, 97, 0.1);
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2px;
@@ -351,7 +351,7 @@ ul {
 .metric-mini .val {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
 }
 
 .metric-mini .lbl {
@@ -406,7 +406,7 @@ ul {
 
 .btn-secondary {
     background: transparent;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     border: 2px solid var(--accent-primarys);
 }
 
@@ -448,7 +448,7 @@ ul {
 
 .vision-eye-icon {
     font-size: 5rem;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     opacity: 0.7;
     position: absolute;
     z-index: 0;
@@ -469,7 +469,7 @@ ul {
 .vision-image hr {
     width: 60px;
     border: none;
-    border-top: 2px solid var(--accent-primary);
+    border-top: 2px solid var(--accent-primarys);
     margin: 1.5rem auto;
     opacity: 0.3;
 }
@@ -523,7 +523,7 @@ ul {
 .v-item strong {
     display: block;
     font-size: 1.4rem;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     font-weight: 700;
 }
 
@@ -622,12 +622,12 @@ section {
 .feature-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--card-shadow-hover);
-    border-color: var(--accent-primary);
+    border-color: var(--accent-primarys);
 }
 
 .feature-icon {
     font-size: 2.5rem;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     margin-bottom: 1.5rem;
 }
 
@@ -697,7 +697,7 @@ section {
 
 .stat-item strong {
     font-size: 2.5rem;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
 }
 
 .stat-item .unit {
@@ -792,7 +792,7 @@ section {
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: var(--accent-primary);
+    border-color: var(--accent-primarys);
 }
 
 .btn-block {
@@ -943,7 +943,7 @@ section {
 }
 
 .footer-links a:hover {
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
 }
 
 .footer-bottom {
@@ -1042,7 +1042,7 @@ section {
 
 .pipeline-step:hover {
     transform: translateY(-5px);
-    border-color: var(--accent-primary);
+    border-color: var(--accent-primarys);
 }
 
 .model-step-image {
@@ -1055,7 +1055,7 @@ section {
     right: 1.5rem;
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     opacity: 0.4;
     /* Secondary visual element */
 }
@@ -1111,7 +1111,7 @@ section {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     margin: 2rem 0 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border-color);
@@ -1122,7 +1122,7 @@ section {
 }
 
 .text-sage {
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
 }
 
 .text-rose {
@@ -1221,7 +1221,7 @@ section {
 .metrics-mini .m-item strong {
     display: block;
     font-size: 1.2rem;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
 }
 
 .result-actions {
@@ -1259,7 +1259,7 @@ section {
 
 .significance-item:hover {
     transform: translateX(10px);
-    border-color: var(--accent-primary);
+    border-color: var(--accent-primarys);
     box-shadow: var(--card-shadow-hover);
 }
 
@@ -1306,7 +1306,7 @@ section {
 
 .impact-low {
     background: rgba(78, 122, 97, 0.1);
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     border: 1px solid rgba(78, 122, 97, 0.2);
 }
 
@@ -1670,7 +1670,7 @@ section {
 [data-theme="dark"] .field-input:focus,
 [data-theme="dark"] select.field-input:focus {
     outline: none;
-    border-color: var(--accent-primary);
+    border-color: var(--accent-primarys);
     box-shadow: 0 0 0 2px rgba(127, 175, 199, 0.25);
 }
 
@@ -1746,7 +1746,7 @@ section {
 
 .initial-state i {
     font-size: 4rem;
-    color: var(--accent-primary);
+    color: var(--accent-primarys);
     opacity: 0.2;
     margin-bottom: 1.5rem;
 }
@@ -2109,6 +2109,7 @@ select.field-input {
         font-size: 1.2rem;
     }
 }
+
 
 
 
