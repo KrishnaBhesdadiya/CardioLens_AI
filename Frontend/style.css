@@ -1100,7 +1100,7 @@ section {
 }
 
 .pipeline-step.spotlight {
-    border: 2px solid var(--accent-primary);
+    border: 2px solid var(--accent-primarys);
     box-shadow: 0 10px 30px -10px rgba(78, 122, 97, 0.2);
 }
 
@@ -2109,5 +2109,6 @@ select.field-input {
         font-size: 1.2rem;
     }
 }
+
 
 
