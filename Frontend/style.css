@@ -1456,6 +1456,41 @@ section {
     }
 }
 
+.ecg-svg {
+    width: 70%;
+    height: 80px;
+    opacity: 0.25;
+}
+
+.ecg-lines {
+    fill: none;
+    stroke: #ef4444;
+    /* pink/red medical color */
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: ecg-beat 2s linear infinite;
+}
+
+/* ECG Draw Animation */
+@keyframes ecg-beat {
+    0% {
+        stroke-dashoffset: 200;
+        opacity: 0.2;
+    }
+
+    40% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    100% {
+        stroke-dashoffset: -200;
+        opacity: 0.2;
+    }
+}
 
 /* Premium Form Header */
 .form-header-premium {
@@ -2072,3 +2107,4 @@ select.field-input {
         font-size: 1.2rem;
     }
 }
+
